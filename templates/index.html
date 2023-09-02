@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TurkmenGPT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+   
+    <!-- <img src="../static/images/emblem.jpg" alt="Left Logo"> -->
+   
+    <div class="container">
+        <h1>TurkmenGPT</h1>
+        <div class="conversation-container" id="conversation-container">
+            <!-- Messages will be displayed here -->
+            {% for message in conversation_history %}
+                {% if message['type'] == 'user' %}
+                    <div class="message user-message">{{ message['text'] }}</div>
+                {% else %}
+                    <div class="message bot-message">{{ message['text'] }}</div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="input-container">
+            <textarea id="message-input" placeholder="Type your message"></textarea>
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
